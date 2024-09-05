@@ -22,10 +22,9 @@ public class HighwayMovement : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.position += new Vector3(0, 0, -highwaySpeed) * Time.deltaTime * 0.1f;
+        gameObject.transform.position += new Vector3(0, 0, -highwaySpeed * 0.1f) * Time.deltaTime;
 
         SpawnHighway();
-
         DeleteHighway();
     }
 
@@ -43,7 +42,6 @@ public class HighwayMovement : MonoBehaviour
         if (Vector3.Distance(deleteHighway.transform.position, player.transform.position) > 150)
         {
             Destroy(gameObject);
-            hasSpawned = true;
         }
     }
 }

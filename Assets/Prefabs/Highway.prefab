@@ -56,7 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadNextHighway: {fileID: 7776402389776823130}
   deleteHighway: {fileID: 8918450945766203659}
-  highwaySpeed: 200
+  highwaySpeed: 300
 --- !u!1 &7776402389776823130
 GameObject:
   m_ObjectHideFlags: 0

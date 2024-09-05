@@ -471,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4871547279608263903}
   - component: {fileID: 6333514905249708711}
+  - component: {fileID: 3001500828545096317}
   m_Layer: 0
   m_Name: Car
   m_TagString: Car
@@ -520,8 +521,27 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3001500828545096317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215439159112953059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2167add9a2d7cb74a9cc3d25d3ffcd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1462205613896863449, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
+  explosionPrefab: {fileID: 7142462664477166239, guid: b0297d6ae1e52934094c6dc7a0c5882b, type: 3}
+  highwayScript: {fileID: 8644708061858927396, guid: 4eb428b2a093fc84ca79f36a45d842f9, type: 3}
+  carSpeed: 9
+  speedDifference: 0.2
+  highwayToCarSpeed: 33
+  flyFactor: 0.04

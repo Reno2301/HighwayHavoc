@@ -1,0 +1,55 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CarScript : MonoBehaviour
+{
+    public GameObject player;
+
+    public GameObject explosionPrefab;
+
+    public HighwayMovement highwayScript;
+
+    public float carSpeed;
+    public float speedDifference;
+    public float highwayToCarSpeed;
+
+    private float startFlyFactor = 0;
+    public float flyFactor = 1;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        float randomFloat = Random.Range(1 - speedDifference, 1 + speedDifference);
+
+        carSpeed = highwayScript.highwaySpeed / highwayToCarSpeed;
+
+        carSpeed *= randomFloat;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        gameObject.transform.position += new Vector3(0, 0, -carSpeed) * Time.deltaTime;
+
+        transform.position += new Vector3(0, startFlyFactor, 0);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            startFlyFactor = flyFactor;
+            StartCoroutine(Explode());
+        }
+    }
+
+    IEnumerator Explode()
+    {
+        yield return new WaitForSeconds(0.6f);
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
+    }
+}
