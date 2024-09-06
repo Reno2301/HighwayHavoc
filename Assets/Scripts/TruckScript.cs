@@ -6,12 +6,16 @@ public class TruckScript : MonoBehaviour
 {
     public HighwayMovement highwayScript;
 
+    ScoreUI score;
+
     public float truckSpeed;
     public float speedDifference = 0.1f;
     public float highwayToTruckSpeed = 33;
 
     void Start()
     {
+        score = GameObject.Find("ScoreUI").GetComponent<ScoreUI>();
+
         float randomFloat = Random.Range(1 - speedDifference, 1 + speedDifference);
 
         truckSpeed = highwayScript.highwaySpeed / highwayToTruckSpeed;
@@ -30,6 +34,7 @@ public class TruckScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
+            score.scoreFactor = 1;
         }
     }
 }

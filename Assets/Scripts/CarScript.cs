@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarScript : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class CarScript : MonoBehaviour
     public GameObject explosionPrefab;
 
     public HighwayMovement highwayScript;
+
+    public Text bonusText;
 
     ScoreUI score;
 
@@ -19,11 +22,15 @@ public class CarScript : MonoBehaviour
     private float startFlyFactor = 0;
     public float flyFactor = 0.04f;
 
+    private bool hit;
 
     // Start is called before the first frame update
     void Start()
     {
+        hit = false;
+
         score = GameObject.Find("ScoreUI").GetComponent<ScoreUI>();
+        bonusText = GameObject.Find("BonusScore").GetComponent<Text>();
 
         float randomFloat = Random.Range(1 - speedDifference, 1 + speedDifference);
 
@@ -42,13 +49,18 @@ public class CarScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !hit)
         {
             startFlyFactor = flyFactor;
 
             score.scoreFactor += 1;
 
+            bonusText.text = "+200";
+
+            score.score += 200;
+
             StartCoroutine(Explode());
+            hit = true;
         }
     }
 
@@ -58,6 +70,7 @@ public class CarScript : MonoBehaviour
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
         yield return new WaitForSeconds(0.2f);
+        bonusText.text = "";
         Destroy(gameObject);
     }
 }
