@@ -10,6 +10,8 @@ public class CarScript : MonoBehaviour
 
     public HighwayMovement highwayScript;
 
+    ScoreUI score;
+
     public float carSpeed;
     public float speedDifference = 0.2f;
     public float highwayToCarSpeed = 33;
@@ -17,9 +19,12 @@ public class CarScript : MonoBehaviour
     private float startFlyFactor = 0;
     public float flyFactor = 0.04f;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        score = GameObject.Find("ScoreUI").GetComponent<ScoreUI>();
+
         float randomFloat = Random.Range(1 - speedDifference, 1 + speedDifference);
 
         carSpeed = highwayScript.highwaySpeed / highwayToCarSpeed;
@@ -40,6 +45,9 @@ public class CarScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             startFlyFactor = flyFactor;
+
+            score.scoreFactor += 1;
+
             StartCoroutine(Explode());
         }
     }
