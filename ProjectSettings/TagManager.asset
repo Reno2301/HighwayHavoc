@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Car
   - Police
+  - Highway
+  - Truck
   layers:
   - Default
   - TransparentFX

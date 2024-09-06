@@ -11,11 +11,11 @@ public class CarScript : MonoBehaviour
     public HighwayMovement highwayScript;
 
     public float carSpeed;
-    public float speedDifference;
-    public float highwayToCarSpeed;
+    public float speedDifference = 0.2f;
+    public float highwayToCarSpeed = 33;
 
     private float startFlyFactor = 0;
-    public float flyFactor = 1;
+    public float flyFactor = 0.04f;
 
     // Start is called before the first frame update
     void Start()
