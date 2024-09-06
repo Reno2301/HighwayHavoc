@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TruckScript : MonoBehaviour
 {
+    GameManager gameManager;
+
     public HighwayMovement highwayScript;
 
     ScoreUI score;
@@ -14,6 +16,8 @@ public class TruckScript : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         score = GameObject.Find("ScoreUI").GetComponent<ScoreUI>();
 
         float randomFloat = Random.Range(1 - speedDifference, 1 + speedDifference);
@@ -26,7 +30,10 @@ public class TruckScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += new Vector3(0, 0, -truckSpeed) * Time.deltaTime;
+        if (gameManager.gameStarted)
+        {
+            gameObject.transform.position += new Vector3(0, 0, -truckSpeed) * Time.deltaTime;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

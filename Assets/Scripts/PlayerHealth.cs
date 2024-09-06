@@ -64,6 +64,5 @@ public class PlayerHealth : MonoBehaviour
         renderers[i].enabled = true;
         }
         isInvincible = false;
-        Debug.Log("Player can now be hit again.");
     }
 }

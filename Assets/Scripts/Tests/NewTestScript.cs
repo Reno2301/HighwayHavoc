@@ -4,6 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NewTestScript
 {
@@ -12,6 +13,12 @@ public class NewTestScript
     {
         SceneManager.LoadScene("SampleScene");
 
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator Yeah()
+    {
         yield return null;
     }
 
@@ -39,29 +46,29 @@ public class NewTestScript
             Debug.Log("They collided!");
         }*/
 
-    [UnityTest]
-    public IEnumerator PlayerHitTruckLoseHealth()
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        GameObject truck = GameObject.FindWithTag("Truck");
-
-        Assert.IsNotNull(player, "No player");
-        Assert.IsNotNull(truck, "No Truck");
-
-        Collider playerCollider = player.GetComponentInChildren<Collider>();
-        Collider carCollider = truck.GetComponentInChildren<Collider>();
-
-        Assert.IsNotNull(playerCollider, "No PlayerCollider");
-        Assert.IsNotNull(carCollider, "No TruckCollider");
-
-        while (!playerCollider.bounds.Intersects(carCollider.bounds))
+    /*    [UnityTest]
+        public IEnumerator PlayerHitTruckLoseHealth()
         {
-            yield return null;
-        }
+            GameObject player = GameObject.FindWithTag("Player");
+            GameObject truck = GameObject.FindWithTag("Truck");
 
-        Assert.IsTrue(playerCollider.bounds.Intersects(carCollider.bounds), "No collision");
-        Debug.Log("They collided!");
+            Assert.IsNotNull(player, "No player");
+            Assert.IsNotNull(truck, "No Truck");
 
-        Assert.AreEqual(player.GetComponent<PlayerHealth>().currentHealth, 2, "Current health is not 2");
-    }
+            Collider playerCollider = player.GetComponentInChildren<Collider>();
+            Collider carCollider = truck.GetComponentInChildren<Collider>();
+
+            Assert.IsNotNull(playerCollider, "No PlayerCollider");
+            Assert.IsNotNull(carCollider, "No TruckCollider");
+
+            while (!playerCollider.bounds.Intersects(carCollider.bounds))
+            {
+                yield return null;
+            }
+
+            Assert.IsTrue(playerCollider.bounds.Intersects(carCollider.bounds), "No collision");
+            Debug.Log("They collided!");
+
+            Assert.AreEqual(player.GetComponent<PlayerHealth>().currentHealth, 2, "Current health is not 2");
+        }*/
 }

@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class CarScript : MonoBehaviour
 {
+    GameManager gameManager;
+
     public GameObject player;
-
     public GameObject explosionPrefab;
-
     public HighwayMovement highwayScript;
 
-    public Text bonusText;
-
+    BonusText bonusTextScript;
     ScoreUI score;
 
     public float carSpeed;
@@ -24,13 +23,19 @@ public class CarScript : MonoBehaviour
 
     private bool hit;
 
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        GameObject scoreUI = GameObject.Find("ScoreUI");
+        score = scoreUI.GetComponent<ScoreUI>();
+        bonusTextScript = scoreUI.GetComponent<BonusText>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         hit = false;
-
-        score = GameObject.Find("ScoreUI").GetComponent<ScoreUI>();
-        bonusText = GameObject.Find("BonusScore").GetComponent<Text>();
 
         float randomFloat = Random.Range(1 - speedDifference, 1 + speedDifference);
 
@@ -42,35 +47,36 @@ public class CarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += new Vector3(0, 0, -carSpeed) * Time.deltaTime;
+        if (gameManager.gameStarted)
+        {
+            gameObject.transform.position += new Vector3(0, 0, -carSpeed) * Time.deltaTime;
 
-        transform.position += new Vector3(0, startFlyFactor, 0);
+            transform.position += new Vector3(0, startFlyFactor * 2, startFlyFactor);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player") && !hit)
         {
+            hit = true;
             startFlyFactor = flyFactor;
 
-            score.scoreFactor += 1;
+            bonusTextScript.ShowBonusText();
 
-            bonusText.text = "+200";
+            score.scoreFactor += 1;
 
             score.score += 200;
 
             StartCoroutine(Explode());
-            hit = true;
         }
     }
 
     IEnumerator Explode()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        yield return new WaitForSeconds(0.2f);
-        bonusText.text = "";
-        Destroy(gameObject);
+        Destroy(gameObject, 0.2f);
     }
 }

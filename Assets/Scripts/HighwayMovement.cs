@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HighwayMovement : MonoBehaviour
 {
+    GameManager gameManager;
     private GameObject player;
     private GameObject highwayPrefab;
     public GameObject loadNextHighway;
@@ -12,8 +13,10 @@ public class HighwayMovement : MonoBehaviour
     public float highwaySpeed = 1f;
     private bool hasSpawned;
 
+
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         highwayPrefab = gameObject;
         hasSpawned = false;
@@ -22,10 +25,13 @@ public class HighwayMovement : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.position += new Vector3(0, 0, -highwaySpeed * 0.1f) * Time.deltaTime;
+        if (gameManager.gameStarted)
+        {
+            gameObject.transform.position += new Vector3(0, 0, -highwaySpeed * 0.1f) * Time.deltaTime;
 
-        SpawnHighway();
-        DeleteHighway();
+            SpawnHighway();
+            DeleteHighway();
+        }
     }
 
     void SpawnHighway()

@@ -10,6 +10,11 @@ public class ExplosionScript : MonoBehaviour
         StartCoroutine(Delete());
     }
 
+    private void Update()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+    }
+
     IEnumerator Delete()
     {
         yield return new WaitForSeconds(3f);
