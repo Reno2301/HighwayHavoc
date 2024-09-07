@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    GameManager gameManager;
+    public GameManager gameManager;
 
-    Rigidbody player;
+    public Rigidbody player;
 
     public float moveSpeed = 5f;
 
-    Vector3 movement;
+    public Vector3 movement;
 
     private void Start()
     {
@@ -22,10 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gameManager.gameStarted)
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.z = Input.GetAxisRaw("Vertical");
-
-            player.position = new Vector3(player.position.x, player.position.y, Mathf.Clamp(player.position.z, -7, 5));
+            GetInput();
         }
     }
 
@@ -33,7 +30,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (gameManager.gameStarted)
         {
-            player.MovePosition(player.position + movement * moveSpeed * Time.fixedDeltaTime);
+            MovePosition();
         }
+    }
+
+    public void GetInput()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.z = Input.GetAxisRaw("Vertical");
+    }
+
+    public void MovePosition()
+    {
+        player.position = new Vector3(Mathf.Clamp(player.position.x, -5, 5), player.position.y, Mathf.Clamp(player.position.z, -7, 5));
+
+        player.MovePosition(player.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

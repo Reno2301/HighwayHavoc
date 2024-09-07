@@ -77,6 +77,6 @@ public class CarScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        Destroy(gameObject, 0.2f);
+        //Destroy(gameObject, 0.2f);
     }
 }
