@@ -119,6 +119,8 @@ public class NewTestScript
 
         while (!playerCollider.bounds.Intersects(carCollider.bounds))
         {
+            playerMovement.movement.x = 1f;
+
             yield return null;
         }
 
