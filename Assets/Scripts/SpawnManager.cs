@@ -13,6 +13,8 @@ public class SpawnManager : MonoBehaviour
 
     private bool carsSpawned;
 
+    float elapsedTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,18 +26,27 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
+
         if (gameManager.isPlaying)
         {
             if (!carsSpawned)
             {
-                StartCoroutine(Spawn(carPrefabs[Random.Range(0, carPrefabs.Length)], carPrefabs[Random.Range(0, carPrefabs.Length)], 
+                StartCoroutine(Spawn(carPrefabs[Random.Range(0, carPrefabs.Length)], carPrefabs[Random.Range(0, carPrefabs.Length)],
                     spawnPositions[Random.Range(0, spawnPositions.Length / 2)].transform.position,
                     spawnPositions[Random.Range(spawnPositions.Length - spawnPositions.Length / 2, spawnPositions.Length)].transform.position));
+            }
+
+            if (elapsedTime >= 20)
+            {
+                NextLevel();
+
+                elapsedTime = 0;
             }
         }
     }
 
-    IEnumerator Spawn(GameObject gameObject1, GameObject gameObject2, Vector3 spawnPos1, Vector3 spawnPos2)
+    private IEnumerator Spawn(GameObject gameObject1, GameObject gameObject2, Vector3 spawnPos1, Vector3 spawnPos2)
     {
         carsSpawned = true;
 
@@ -45,5 +56,17 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
 
         carsSpawned = false;
+    }
+
+    private void NextLevel()
+    {
+        if (spawnDelay >= 1.8)
+        {
+            spawnDelay -= 0.2f;
+        }
+        else
+        {
+            spawnDelay = 1.8f;
+        }
     }
 }

@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePosition()
     {
-        player.position = new Vector3(Mathf.Clamp(player.position.x, -5, 5), player.position.y, Mathf.Clamp(player.position.z, -7, 5));
+        player.position = new Vector3(Mathf.Clamp(player.position.x, -5, 5), player.position.y, Mathf.Clamp(player.position.z, -7, 7));
 
         player.MovePosition(player.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
