@@ -13,6 +13,9 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isInvincible = false;
 
+    public GameObject gameOverPanel;
+    public GameObject scoreUI;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -43,6 +46,10 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         gameManager.isPlaying = false;
+
+        gameOverPanel.SetActive(true);
+
+        scoreUI.SetActive(false);
 
         Debug.Log("Player has died!");
     }

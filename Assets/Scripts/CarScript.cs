@@ -52,6 +52,11 @@ public class CarScript : MonoBehaviour
             gameObject.transform.position += new Vector3(0, 0, -carSpeed) * Time.deltaTime;
 
             transform.position += new Vector3(0, startFlyFactor * 2, startFlyFactor);
+
+            if (Vector3.Distance(transform.position, player.transform.position) > 100)
+            {
+                DeleteCar();
+            }
         }
     }
 
@@ -70,6 +75,11 @@ public class CarScript : MonoBehaviour
 
             StartCoroutine(Explode());
         }
+    }
+
+    void DeleteCar()
+    {
+        Destroy(gameObject);
     }
 
     IEnumerator Explode()

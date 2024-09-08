@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c825af52f31e1cd419846af6a6ca695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1462205613896863449, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
   highwayScript: {fileID: 8644708061858927396, guid: 4eb428b2a093fc84ca79f36a45d842f9, type: 3}
   truckSpeed: 0
   speedDifference: 0.1

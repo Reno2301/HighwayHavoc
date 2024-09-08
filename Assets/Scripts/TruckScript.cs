@@ -6,13 +6,14 @@ public class TruckScript : MonoBehaviour
 {
     GameManager gameManager;
 
+    public GameObject player;
     public HighwayMovement highwayScript;
 
     ScoreUI score;
 
     public float truckSpeed;
     public float speedDifference = 0.1f;
-    public float highwayToTruckSpeed = 33;
+    public float highwayToTruckSpeed = 28;
 
     void Start()
     {
@@ -33,7 +34,17 @@ public class TruckScript : MonoBehaviour
         if (gameManager.isPlaying)
         {
             gameObject.transform.position += new Vector3(0, 0, -truckSpeed) * Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, player.transform.position) > 100)
+            {
+                DeleteTruck();
+            }
         }
+    }
+
+    void DeleteTruck()
+    {
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
