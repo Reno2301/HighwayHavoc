@@ -36,7 +36,7 @@ public class NewTestScript
         }
     }
 
-    [UnityTest]
+/*    [UnityTest]
     public IEnumerator PlayerReachesFinishLine()
     {
         float moveDuration;
@@ -76,7 +76,7 @@ public class NewTestScript
         Assert.IsTrue(finishScript.finishedLevel, "Level should be completed");
 
         yield return new WaitForSeconds(2f);
-    }
+    }*/
 
     [UnityTest]
     public IEnumerator PlayerCollidesWithCarInRuntime()

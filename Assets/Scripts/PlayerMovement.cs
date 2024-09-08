@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameManager gameManager;
+    GameManager gameManager;
 
-    public Rigidbody player;
+    Rigidbody player;
 
     public float moveSpeed = 5f;
 
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.gameStarted)
+        if (gameManager.isPlaying)
         {
             GetInput();
         }
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameManager.gameStarted)
+        if (gameManager.isPlaying)
         {
             MovePosition();
         }

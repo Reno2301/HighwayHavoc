@@ -25,7 +25,7 @@ public class HighwayMovement : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.gameStarted)
+        if (gameManager.isPlaying)
         {
             gameObject.transform.position += new Vector3(0, 0, -highwaySpeed * 0.1f) * Time.deltaTime;
 

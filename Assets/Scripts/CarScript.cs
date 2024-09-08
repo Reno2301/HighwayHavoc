@@ -47,7 +47,7 @@ public class CarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameStarted)
+        if (gameManager.isPlaying)
         {
             gameObject.transform.position += new Vector3(0, 0, -carSpeed) * Time.deltaTime;
 
@@ -77,6 +77,6 @@ public class CarScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        //Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 0.2f);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int secondsBeforeStartingGame;
-    public bool gameStarted;
+    public bool isPlaying;
 
     public Text startingGameText;
     public float startingFloat;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameStarted = false;
+        isPlaying = false;
         startingFloat = 4f;
         StartCoroutine(StartingGame());
     }
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartingGame()
     {
         yield return new WaitForSeconds(secondsBeforeStartingGame);
-        gameStarted = true;
+        isPlaying = true;
     }
 
     private void Update()

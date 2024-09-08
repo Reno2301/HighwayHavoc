@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    GameManager gameManager;
+
     public int maxHealth = 3;
     public int currentHealth;
 
@@ -13,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         currentHealth = maxHealth;
     }
 
@@ -38,6 +42,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        gameManager.isPlaying = false;
+
         Debug.Log("Player has died!");
     }
 
