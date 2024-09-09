@@ -32,9 +32,19 @@ public class SpawnManager : MonoBehaviour
         {
             if (!carsSpawned)
             {
-                StartCoroutine(Spawn(carPrefabs[Random.Range(0, carPrefabs.Length)], carPrefabs[Random.Range(0, carPrefabs.Length)],
-                    spawnPositions[Random.Range(0, spawnPositions.Length / 2)].transform.position,
-                    spawnPositions[Random.Range(spawnPositions.Length - spawnPositions.Length / 2, spawnPositions.Length)].transform.position));
+                GameObject firstCar = carPrefabs[Random.Range(0, carPrefabs.Length)];
+                GameObject secondCar = carPrefabs[Random.Range(0, carPrefabs.Length)];
+
+                Vector3 firstPos = spawnPositions[Random.Range(0, spawnPositions.Length / 2)].transform.position;
+                Vector3 secondPos = spawnPositions[Random.Range(spawnPositions.Length - spawnPositions.Length / 2, spawnPositions.Length)].transform.position;
+
+                if (firstCar.CompareTag("Truck")) firstPos.y = 0f;
+                else if (firstCar.CompareTag("Car")) firstPos.y = 0.5f;
+
+                if (secondCar.CompareTag("Truck")) secondPos.y = 0f;
+                else if (secondCar.CompareTag("Car")) secondPos.y = 0.5f;
+
+                StartCoroutine(Spawn(firstCar, secondCar, firstPos, secondPos));
             }
 
             if (elapsedTime >= 20)

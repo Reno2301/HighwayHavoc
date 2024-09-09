@@ -10,7 +10,6 @@ public class CarScript : MonoBehaviour
     public GameObject player;
     public GameObject explosionPrefab;
     public HighwayMovement highwayScript;
-    private GameObject audioManager;
 
     private BonusText bonusTextScript;
     private ScoreUI score;
@@ -27,7 +26,6 @@ public class CarScript : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioManager = GameObject.Find("AudioManager");
 
         GameObject scoreUI = GameObject.Find("ScoreUI");
         score = scoreUI.GetComponent<ScoreUI>();
@@ -90,8 +88,15 @@ public class CarScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        audioManager.GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().Play();
 
-        Destroy(gameObject, 0.2f);
+        MeshRenderer[] meshes = gameObject.GetComponentsInChildren<MeshRenderer>();
+
+        for (int i = 0; i < meshes.Length; i++)
+        {
+            meshes[i].enabled = false;
+        }
+
+        Destroy(gameObject, 3f);
     }
 }
