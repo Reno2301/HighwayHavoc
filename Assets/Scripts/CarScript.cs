@@ -14,6 +14,9 @@ public class CarScript : MonoBehaviour
     private BonusText bonusTextScript;
     private ScoreUI score;
 
+    public AudioSource explosionSfx;
+    public AudioSource[] hitSfxs;
+
     public float carSpeed;
     public float speedDifference = 0.2f;
     public float highwayToCarSpeed = 33;
@@ -64,6 +67,8 @@ public class CarScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !hit)
         {
+            hitSfxs[Random.Range(0, 2)].Play();
+
             hit = true;
 
             startFlyFactor = flyFactor;
@@ -88,15 +93,17 @@ public class CarScript : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        GetComponent<AudioSource>().Play();
+        explosionSfx.Play();
 
         MeshRenderer[] meshes = gameObject.GetComponentsInChildren<MeshRenderer>();
+
+        yield return new WaitForSeconds(0.2f);
 
         for (int i = 0; i < meshes.Length; i++)
         {
             meshes[i].enabled = false;
         }
 
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 2f);
     }
 }

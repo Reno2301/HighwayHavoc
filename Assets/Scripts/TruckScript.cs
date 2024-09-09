@@ -51,7 +51,15 @@ public class TruckScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+
+            if (!playerHealth.isInvincible)
+            {
+                GetComponent<AudioSource>().Play();
+            }
+
+            playerHealth.TakeDamage(1);
+
             score.scoreFactor = 1;
         }
     }
