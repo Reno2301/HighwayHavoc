@@ -629,6 +629,7 @@ MonoBehaviour:
   player: {fileID: 1462205613896863449, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
   explosionPrefab: {fileID: 7142462664477166239, guid: b0297d6ae1e52934094c6dc7a0c5882b, type: 3}
   highwayScript: {fileID: 8644708061858927396, guid: 4eb428b2a093fc84ca79f36a45d842f9, type: 3}
+  explosion: {fileID: 0}
   carSpeed: 9
   speedDifference: 0.2
   highwayToCarSpeed: 33

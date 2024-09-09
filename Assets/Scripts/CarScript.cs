@@ -10,9 +10,10 @@ public class CarScript : MonoBehaviour
     public GameObject player;
     public GameObject explosionPrefab;
     public HighwayMovement highwayScript;
+    private GameObject audioManager;
 
-    BonusText bonusTextScript;
-    ScoreUI score;
+    private BonusText bonusTextScript;
+    private ScoreUI score;
 
     public float carSpeed;
     public float speedDifference = 0.2f;
@@ -26,6 +27,7 @@ public class CarScript : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioManager = GameObject.Find("AudioManager");
 
         GameObject scoreUI = GameObject.Find("ScoreUI");
         score = scoreUI.GetComponent<ScoreUI>();
@@ -65,6 +67,7 @@ public class CarScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !hit)
         {
             hit = true;
+
             startFlyFactor = flyFactor;
 
             bonusTextScript.ShowBonusText();
@@ -86,6 +89,8 @@ public class CarScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        audioManager.GetComponent<AudioSource>().Play();
 
         Destroy(gameObject, 0.2f);
     }
