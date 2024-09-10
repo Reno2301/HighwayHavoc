@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
             policeMoveSpeed = 5f;
             for (int i = 0; i < policeCars.Length; i++)
             {
-                targetPositions[i] = new Vector3(policeCars[i].transform.position.x, policeCars[i].transform.position.y, gameObject.transform.position.z);
+                targetPositions[i] = new Vector3(policeCars[i].transform.position.x, policeCars[i].transform.position.y, gameObject.transform.position.z - 5);
             }
 
             Die();

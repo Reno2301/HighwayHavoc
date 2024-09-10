@@ -67,7 +67,7 @@ public class CarScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !hit)
         {
-            hitSfxs[Random.Range(0, 2)].Play();
+            hitSfxs[Random.Range(0, hitSfxs.Length)].Play();
 
             hit = true;
 
