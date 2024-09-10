@@ -16,11 +16,29 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject scoreUI;
 
+    public GameObject[] policeCars;
+    private Vector3[] targetPositions;
+    public float policeMoveSpeed = 2f;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         currentHealth = maxHealth;
+
+        targetPositions = new Vector3[policeCars.Length];
+        for (int i = 0; i < policeCars.Length; i++)
+        {
+            targetPositions[i] = policeCars[i].transform.position;
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < policeCars.Length; i++)
+        {
+            policeCars[i].transform.position = Vector3.MoveTowards(policeCars[i].transform.position, targetPositions[i], policeMoveSpeed * Time.deltaTime);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -34,10 +52,21 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            policeMoveSpeed = 5f;
+            for (int i = 0; i < policeCars.Length; i++)
+            {
+                targetPositions[i] = new Vector3(policeCars[i].transform.position.x, policeCars[i].transform.position.y, gameObject.transform.position.z);
+            }
+
             Die();
         }
         else
         {
+            for (int i = 0; i < policeCars.Length; i++)
+            {
+                targetPositions[i] = policeCars[i].transform.position + Vector3.forward;
+            }
+
             Debug.Log("Player Health: " + currentHealth);
             StartCoroutine(InvincibilityCooldown());
         }
@@ -74,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
 
         for (int i = 0; i < renderers.Length; i++)
         {
-        renderers[i].enabled = true;
+            renderers[i].enabled = true;
         }
         isInvincible = false;
     }

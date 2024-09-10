@@ -415,6 +415,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49788472}
   m_CullTransparentMesh: 1
+--- !u!1 &78897150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1034853541138236286, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
+  m_PrefabInstance: {fileID: 382610813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &181593983
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6778768568999418877, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.75
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 6778768568999418877, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1001,6 +1006,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb428b2a093fc84ca79f36a45d842f9, type: 3}
+--- !u!1 &656033928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1034853541138236286, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
+  m_PrefabInstance: {fileID: 2850050023588553023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &683049832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1241,7 @@ MonoBehaviour:
   - {fileID: 6735033390902499838, guid: 8a0a7ab5f77a1c247b2fcf38093fb84e, type: 3}
   - {fileID: 6735033390902499838, guid: 8a0a7ab5f77a1c247b2fcf38093fb84e, type: 3}
   - {fileID: 6735033390902499838, guid: 8a0a7ab5f77a1c247b2fcf38093fb84e, type: 3}
-  spawnDelay: 3
+  spawnDelay: 2.7
 --- !u!4 &749360437
 Transform:
   m_ObjectHideFlags: 0
@@ -1270,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6778768568999418877, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.75
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6778768568999418877, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1915,6 +1925,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407516544}
   m_CullTransparentMesh: 1
+--- !u!1 &1429250301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1034853541138236286, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
+  m_PrefabInstance: {fileID: 765760319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1585244431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,7 +2913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6778768568999418877, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.75
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6778768568999418877, guid: 991b2df4ade49a6458047320fe4e4823, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2993,6 +3008,22 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 42963941}
+    - target: {fileID: 2161578665566368793, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
+      propertyPath: policeCars.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161578665566368793, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
+      propertyPath: policeCars.Array.data[0]
+      value: 
+      objectReference: {fileID: 656033928}
+    - target: {fileID: 2161578665566368793, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
+      propertyPath: policeCars.Array.data[1]
+      value: 
+      objectReference: {fileID: 78897150}
+    - target: {fileID: 2161578665566368793, guid: 6d8da5efd89440a4d847fb25a5f4ad84, type: 3}
+      propertyPath: policeCars.Array.data[2]
+      value: 
+      objectReference: {fileID: 1429250301}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
