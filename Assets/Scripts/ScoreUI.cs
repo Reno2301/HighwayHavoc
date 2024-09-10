@@ -9,7 +9,9 @@ public class ScoreUI : MonoBehaviour
 
     public PlayerHealth playerHealth;
 
+    public float highScore;
     public Text scoreText;
+    public Text highScoreText;
 
     public float score = 0f;
     public float scoreFactor = 1f;

@@ -6,10 +6,18 @@ using UnityEngine.UI;
 public class DisplayScore : MonoBehaviour
 {
     public ScoreUI scoreUI;
-    public Text text;
+    public Text scoreText;
+    public Text highScoreText;
 
     private void Start()
     {
-        text.text = "SCORE: " + scoreUI.scoreText.text;
+        scoreText.text = scoreUI.scoreText.text;
+
+        if (scoreUI.score > PlayerPrefs.GetInt("Highscore"))
+        {
+            PlayerPrefs.SetInt("Highscore", (int)scoreUI.score);
+        }
+
+        highScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
     }
 }
