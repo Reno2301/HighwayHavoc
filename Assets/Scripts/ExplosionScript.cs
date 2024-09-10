@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExplosionScript : MonoBehaviour
 {
+    private float flyFactor = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -12,7 +14,7 @@ public class ExplosionScript : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
+        transform.position += new Vector3(0, flyFactor * 2, flyFactor) * Time.deltaTime;
     }
 
     IEnumerator Delete()

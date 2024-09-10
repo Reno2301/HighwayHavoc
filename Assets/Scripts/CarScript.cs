@@ -21,7 +21,7 @@ public class CarScript : MonoBehaviour
     public float speedDifference = 0.2f;
     public float highwayToCarSpeed = 33;
 
-    private float startFlyFactor = 0;
+    public float startFlyFactor = 0;
     public float flyFactor = 0.04f;
 
     private bool hit;
@@ -54,7 +54,7 @@ public class CarScript : MonoBehaviour
         {
             gameObject.transform.position += new Vector3(0, 0, -carSpeed) * Time.deltaTime;
 
-            transform.position += new Vector3(0, startFlyFactor * 2, startFlyFactor);
+            transform.position += new Vector3(0, startFlyFactor * 2, startFlyFactor) * Time.deltaTime;
 
             if (Vector3.Distance(transform.position, player.transform.position) > 100)
             {
