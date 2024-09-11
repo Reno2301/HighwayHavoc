@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   movement: {x: 0, y: 0, z: 0}
+  brakeSpeedExtra: 1.8
 --- !u!114 &2161578665566368793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,8 @@ MonoBehaviour:
   isInvincible: 0
   gameOverPanel: {fileID: 0}
   scoreUI: {fileID: 0}
+  policeCars: []
+  policeMoveSpeed: 2
 --- !u!1 &1493928988006546099
 GameObject:
   m_ObjectHideFlags: 0
